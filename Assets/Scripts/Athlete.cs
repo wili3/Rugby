@@ -12,6 +12,8 @@ public class Athlete : MonoBehaviour
 	public Text nameText, countryText, positionsText;
 	public RawImage profilePic;
 	public Image[] stars;
+	public Image injuredIcon;
+	public bool isInjured;
 
 	// Use this for initialization
 	public void Initialize(AthleteInfo athleteInfo)
@@ -22,6 +24,7 @@ public class Athlete : MonoBehaviour
 		positions = athleteInfo.positions;
 		avatarUrl = athleteInfo.avatar_url;
 		id = athleteInfo.id;
+		isInjured = athleteInfo.is_injured;
 		StartCoroutine (GetImage ());
 	}
 
@@ -32,6 +35,11 @@ public class Athlete : MonoBehaviour
 		SetStars ();
 		SetPositionsText ();
 		profilePic.texture = playerImage;
+		if (isInjured) {
+			injuredIcon.gameObject.SetActive (true);
+			Destroy(this.GetComponent<Draggable>());
+		}
+	
 	}
 
 	void SetStars()

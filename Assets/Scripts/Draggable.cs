@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
+public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler 
+{
 
 	[HideInInspector]
 	public Transform parentToReturnTo = null;
@@ -12,7 +13,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 	private GameObject placeHolder = null;
 
-	public void OnBeginDrag(PointerEventData eventData) {
+	public void OnBeginDrag(PointerEventData eventData)
+	{
 		placeHolder = Instantiate(this.gameObject);
 		placeHolder.transform.SetParent( this.transform.parent );
 		LayoutElement le = placeHolder.AddComponent<LayoutElement>();
@@ -30,7 +32,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		this.GetComponent<CanvasGroup>().blocksRaycasts = false;
 	}
 
-	public void OnDrag(PointerEventData eventData) {
+	public void OnDrag(PointerEventData eventData) 
+	{
 		this.transform.position = eventData.position;
 
 		if (placeHolder.transform.parent != placeHolderParent)
@@ -56,7 +59,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		placeHolder.transform.SetSiblingIndex(newSiblingIndex);
 	}
 
-	public void OnEndDrag(PointerEventData eventData) {
+	public void OnEndDrag(PointerEventData eventData) 
+	{
 		this.transform.SetParent(parentToReturnTo);
 		this.transform.SetSiblingIndex(placeHolder.transform.GetSiblingIndex());
 		this.GetComponent<CanvasGroup>().blocksRaycasts = true;
