@@ -20,8 +20,8 @@ public class AthleteParser : Singleton<AthleteParser>
 
 		if (athletesJson != string.Empty) 
 		{
-			athletesInfo = JsonUtility.FromJson<AthleteInfosCollection> (athletesJson);
-			Debug.Log(athletesInfo.athletes.Length);
+		 	athletesInfo = JsonUtility.FromJson<AthleteInfosCollection> (athletesJson);
+			AthleteCreator.Instance.Create ();
 		}
 	}
 }
