@@ -24,5 +24,6 @@ public class CurrentTeam : Singleton<CurrentTeam> {
 			athletes [i].transform.SetParent (ParentLayer.Instance.allAthletesContainer);
 			RemoveMember (athletes [i]);
 		}
+		TeamAverage.Instance.Average ();
 	}
 }
